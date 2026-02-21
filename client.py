@@ -42,14 +42,23 @@ def receive():
 font_win = font.Font(None, 72)
 font_main = font.Font(None, 36)
 # --- ЗОБРАЖЕННЯ ----
-img = Image.open("")
-img = img.resize((WIDTH, HEIGHT))
+img1 = Image.open("4118.jpeg")
+img1 = img1.resize((WIDTH, HEIGHT))
 
-mode = img.mode
-size = img.size
-data = img.tobytes()
+mode1 = img1.mode
+size1 = img1.size
+data1 = img1.tobytes()
 
-back = image.fromstring(data, size, mode)
+back1 = image.fromstring(data1, size1, mode1)
+
+img2 = Image.open("Stephen-Hawking-facts-1.jpg")
+img2 = img2.resize((50,50))
+
+mode2 = img2.mode
+size2 = img2.size
+data2 = img2.tobytes()
+
+back2 = image.fromstring(data2, size2, mode2)
 
 
 # --- ЗВУКИ ---
@@ -66,14 +75,14 @@ while True:
             exit()
 
     if "countdown" in game_state and game_state["countdown"] > 0:
-        screen.blit(back, (0,0))
+        screen.blit(back1, (0,0))
         countdown_text = font.Font(None, 72).render(str(game_state["countdown"]), True, (255, 255, 255))
         screen.blit(countdown_text, (WIDTH // 2 - 20, HEIGHT // 2 - 30))
         display.update()
         continue  # Не малюємо гру до завершення відліку
 
     if "winner" in game_state and game_state["winner"] is not None:
-        screen.blit(back, (0,0))
+        screen.blit(back1, (0,0))
 
         if you_winner is None:  # Встановлюємо тільки один раз
             if game_state["winner"] == my_id:
@@ -98,10 +107,11 @@ while True:
         continue  # Блокує гру після перемоги
 
     if game_state:
-        screen.blit(back, (0,0))
+        screen.blit(back1, (0,0))
         draw.rect(screen, (0, 255, 0), (20, game_state['paddles']['0'], 20, 100))
         draw.rect(screen, (255, 0, 255), (WIDTH - 40, game_state['paddles']['1'], 20, 100))
         draw.circle(screen, (255, 255, 255), (game_state['ball']['x'], game_state['ball']['y']), 10)
+        screen.blit(back2, (game_state['ball']['x'] -10, game_state['ball']['y'] -10))
         score_text = font_main.render(f"{game_state['scores'][0]} : {game_state['scores'][1]}", True, (255, 255, 255))
         screen.blit(score_text, (WIDTH // 2 -25, 20))
 
