@@ -42,7 +42,7 @@ def receive():
 font_win = font.Font(None, 72)
 font_main = font.Font(None, 36)
 # --- ЗОБРАЖЕННЯ ----
-img = Image.open("4118.jpeg")
+img = Image.open("")
 img = img.resize((WIDTH, HEIGHT))
 
 mode = img.mode
