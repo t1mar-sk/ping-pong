@@ -166,9 +166,9 @@ while True:
     if game_state:
         screen.blit(back1, (0,0))
         screen.blit(platform, (20, game_state['paddles']['0']))
-        draw.rect(screen, (0, 255, 0), (20, game_state['paddles']['0'], 20, 100), 3)
+        draw.rect(screen, (255, 0, 0), (20, game_state['paddles']['0'], 20, 100), 3)
         screen.blit(platform1, (WIDTH - 40, game_state['paddles']['1']))
-        draw.rect(screen, (255, 0, 255), (WIDTH - 40, game_state['paddles']['1'], 20, 100), 3)
+        draw.rect(screen, (0, 255, 0), (WIDTH - 40, game_state['paddles']['1'], 20, 100), 3)
         draw.circle(screen, (255, 255, 255), (game_state['ball']['x'], game_state['ball']['y']), 10)
         screen.blit(back2, (game_state['ball']['x'] - 10, game_state['ball']['y'] - 10))
         score_text = font_main.render(f"{game_state['scores'][0]} : {game_state['scores'][1]}", True, (0, 0, 0))
